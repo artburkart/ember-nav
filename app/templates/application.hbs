@@ -1,3 +1,11 @@
-<h2 id='title'>Welcome to Ember.js</h2>
-
-{{outlet}}
+<div {{bind-attr class=":container-fluid :cbp-spmenu-push slideOut:cbp-spmenu-push-toright:"}}>
+  <nav {{bind-attr class="slideOut:cbp-spmenu-open: :cbp-spmenu :cbp-spmenu-vertical :cbp-spmenu-left"}}>
+    <h3>Kinvey</h3>
+    <a href="#">Profile</a>
+    <a href="#">Billing</a>
+    <a class="main-menu-bottom-link" href="#">Logout</a>
+  </nav>
+  {{input id="main-menu-check" class="main-menu-check" type="checkbox" checked=slideOut}}
+  <label for="main-menu-check" class="main-menu-toggle"><i class="fa fa-bars"></i></label>
+  {{outlet}}
+</div>
