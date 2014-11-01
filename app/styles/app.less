@@ -30,6 +30,19 @@ body {
     width: 100%;
     border-top: 1px solid @k-hover-bg;;
 }
+.clickable {
+    cursor: pointer;
+}
+.list-group-item {
+    margin-top: 20px;
+}
+
+/* A quick hack to get the breadcrumbs to look decent */
+.breadcrumb > li+script+script+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
 
 /********************************************************
 I stole most of this CSS from http://bit.ly/1pllLsP and

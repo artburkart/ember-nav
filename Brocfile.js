@@ -20,6 +20,7 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 app.import('bower_components/normalize.css/normalize.css');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+app.import("bower_components/ember-breadcrumbs/dist/ember-breadcrumbs.js");
 app.import('bower_components/fontawesome/css/font-awesome.css');
 var fontawesome = pickFiles('bower_components/fontawesome/fonts', {
   srcDir: '/',

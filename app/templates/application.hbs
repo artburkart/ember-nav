@@ -1,11 +1,13 @@
 <div {{bind-attr class=":container-fluid :cbp-spmenu-push slideOut:cbp-spmenu-push-toright:"}}>
-  <nav {{bind-attr class="slideOut:cbp-spmenu-open: :cbp-spmenu :cbp-spmenu-vertical :cbp-spmenu-left"}}>
-    <h3>Kinvey</h3>
-    <a href="#">Profile</a>
-    <a href="#">Billing</a>
-    <a class="main-menu-bottom-link" href="#">Logout</a>
-  </nav>
-  {{input id="main-menu-check" class="main-menu-check" type="checkbox" checked=slideOut}}
-  <label for="main-menu-check" class="main-menu-toggle"><i class="fa fa-bars"></i></label>
-  {{outlet}}
+  {{partial "main-nav"}}
+  <div class="row">
+    <div class="col-xs-11 col-xs-offset-1">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+          {{bread-crumbs class="breadcrumb" tagName="ol"}}
+        </div>
+      </div>
+      <div class="row">{{outlet}}</div>
+    </div>
+  </div>
 </div>

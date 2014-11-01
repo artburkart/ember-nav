@@ -1,0 +1,31 @@
+{
+  "name": "ember-breadcrumbs",
+  "version": "0.0.2",
+  "authors": [
+    "Chris Farber <chris@chrisfarber.net>"
+  ],
+  "description": "Easy breadcrumbs in Ember.js",
+  "main": "dist/ember-breadcrumbs.js",
+  "license": "MIT",
+  "homepage": "https://github.com/chrisfarber/ember-breadcrumbs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "1"
+  },
+  "_release": "0.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.2",
+    "commit": "316157beffc07427a84af0161be3fdc9c0e94650"
+  },
+  "_source": "git://github.com/chrisfarber/ember-breadcrumbs.git",
+  "_target": "~0.0.2",
+  "_originalSource": "ember-breadcrumbs",
+  "_direct": true
+}

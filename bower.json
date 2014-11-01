@@ -17,6 +17,7 @@
   "devDependencies": {
     "bootstrap": "~3.3.0",
     "normalize.css": "~3.0.2",
-    "fontawesome": "~4.2.0"
+    "fontawesome": "~4.2.0",
+    "ember-breadcrumbs": "~0.0.2"
   }
 }

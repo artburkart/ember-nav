@@ -1,0 +1,13 @@
+{{#with model}}
+<h1 class="text-center row">{{title}}</h1>
+<div class="row">
+  <div class="list-group col-xs-12 col-md-6 col-md-offset-3">
+    {{#each environments}}
+      {{#link-to 'environment' this tagName="div" class="list-group-item clickable"}}
+        {{#link-to 'environment' this}}{{title}}{{/link-to}}
+      {{/link-to}}
+      {{!-- <div class="list-group-item">{{title}}</div> --}}
+    {{/each}}
+  </div>
+</div>
+{{/with}}
