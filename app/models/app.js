@@ -3,7 +3,8 @@ import DS from 'ember-data';
 var app = DS.Model.extend({
   title: DS.attr('string'),
   settings: DS.attr(),
-  environments: DS.hasMany('environment', {async: true})
+  environments: DS.hasMany('environment', {async: true}),
+  typeKey: function () { return this.constructor.typeKey; }.property()
 });
 
 app.reopenClass({
@@ -20,7 +21,7 @@ app.reopenClass({
     {
       id: 'affa77f6',
       title: 'Application2',
-      environments: ['956e06b3'],
+      environments: ['956e06b3', '256e06b3'],
       settings: {
         active: 'nope',
         ready: 'nuhuh'

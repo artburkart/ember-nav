@@ -1,0 +1,10 @@
+{{#if siblings}}
+<ul class="breadcrumb-dropdown list-unstyled">
+  <li class="breadcrumb-dropdown-list-item text-center"><i class="fa fa-caret-up"></i></li>
+  {{#each s in siblings}}
+    {{#link-to s.name s.model class="breadcrumb-dropdown-list-item clickable" tagName="li"}}
+      {{#link-to s.name s.model}}{{s.title}}{{/link-to}}
+    {{/link-to}}
+  {{/each}}
+</ul>
+{{/if}}
