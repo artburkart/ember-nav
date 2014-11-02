@@ -1,1 +1,38 @@
-
+{{#with model}}
+<h1 class="text-center row">{{title}}</h1>
+<div class="col-xs-12 col-md-8 col-md-offset-2">
+  <div class="row">
+    <div class="list-group col-xs-12 col-md-6">
+      {{#link-to 'dashboard' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'dashboard' this}}Dashbaord{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'business-logic' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'business-logic' this}}Business Logic{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'data' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'data' this}}Data{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'users' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'users' this}}Users{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'files' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'files' this}}Files{{/link-to}}</h3>
+      {{/link-to}}
+    </div>
+    <div class="list-group col-xs-12 col-md-6">
+      {{#link-to 'push' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'push' this}}Push{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'branding' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'branding' this}}Branding{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'analytics' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'analytics' this}}Analytics{{/link-to}}</h3>
+      {{/link-to}}
+      {{#link-to 'api-console' this tagName="div" class="list-group-item clickable"}}
+        <h3>{{#link-to 'api-console' this}}API Console{{/link-to}}</h3>
+      {{/link-to}}
+    </div>
+  </div>
+</div>
+{{/with}}

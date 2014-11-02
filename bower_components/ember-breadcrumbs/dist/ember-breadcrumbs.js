@@ -17,7 +17,7 @@
 (function() {
   var defaultTemplate;
 
-  defaultTemplate = "{{#each crumb in breadCrumbs}}\n<li {{bind-attr class=\"crumb.isCurrent:current:\"}}>\n  {{#if crumb.modelLink}} {{#link-to crumb.path crumb.model}} {{crumb.model.title}} {{/link-to}} {{/if}} {{#if crumb.linkable}}\n    {{#link-to crumb.path}}\n      {{crumb.name}}\n    {{/link-to}}\n  {{else}}\n    {{crumb.name}}\n  {{/if}}\n</li>\n{{/each}}";
+  defaultTemplate = "{{#each crumb in breadCrumbs}}\n<li {{bind-attr class=\"crumb.isCurrent:current:\"}}>\n  {{#if crumb.modelLink}} {{#link-to crumb.path crumb.model}} {{crumb.model.title}} {{/link-to}} {{/if}} {{#if crumb.linkable}}\n    {{#link-to crumb.path}}\n      {{crumb.name}}\n    {{/link-to}}\n  {{/if}}\n</li>\n{{/each}}";
 
   BreadCrumbs.BreadCrumbsComponent = Ember.Component.extend({
     tagName: "ul",
@@ -45,15 +45,16 @@
       defaultPaths = this.get("pathNames");
       breadCrumbs = [];
       controllers.forEach(function(controller, index) {
-        var crumbName, defaultPath, preCrumbs, specifiedPath;
+        var crumbName, defaultPath, modelCrumbs, specifiedPath;
         crumbName = controller.get("breadCrumb");
-        preCrumbs = controller.get('preCrumbs');
-        // Hack for adding pre-crumbs
-        if (!Ember.isEmpty(preCrumbs)) {
-          preCrumbs.forEach(function (pc) {
+        modelCrumbs = controller.get('modelCrumbs');
+        // Hack for adding model-crumbs
+        if (!Ember.isEmpty(modelCrumbs)) {
+          modelCrumbs.forEach(function (pc) {
             breadCrumbs.addObject({
               path: pc.path,
               model: pc.model,
+              name: pc.name,
               modelLink: true,
               isCurrent: false
             });

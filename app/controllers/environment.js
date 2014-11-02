@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   breadCrumb: function () {
     return this.get('model.title');
   }.property('model.title'),
-  preCrumbs: function () {
+  modelCrumbs: function () {
     return [
       {
         path: 'app',
