@@ -1,9 +1,17 @@
 {{#each crumb in breadCrumbs}}
-  <li {{bind-attr class="crumb.isCurrent:current:"}}>
+  <li {{bind-attr class="crumb.isCurrent:current: :breadcrumb-trigger"}}>
   {{#if crumb.modelLink}}
     {{#link-to crumb.path crumb.model}}
       {{crumb.model.title}}
     {{/link-to}}
+    {{#if crumb.siblings}}
+      <i class="breadcrumb-trigger fa fa-caret-down"></i>
+      <ul class="breadcrumb-dropdown list-unstyled">
+        <li class="breadcrumb-dropdown-list-item text-center"><i class="fa fa-caret-up"></i></li>
+        <li class="breadcrumb-dropdown-list-item clickable"><a href="#">Hello</a></li>
+        <li class="breadcrumb-dropdown-list-item clickable"><a href="#">Joyce</a></li>
+      </ul>
+    {{/if}}
   {{/if}}
   {{#if crumb.linkable}}
     {{#link-to crumb.path}}

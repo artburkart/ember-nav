@@ -1,4 +1,5 @@
 var KinveyCrumbs = window.BreadCrumbs;
+
 KinveyCrumbs.BreadCrumbsComponent.reopen({
   tagName: 'ol',
   classNames: 'breadcrumb',
@@ -21,7 +22,8 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
             model: pc.model,
             name: pc.name,
             modelLink: true,
-            isCurrent: false
+            isCurrent: false,
+            siblings: ['hello']
           });
         });
       }

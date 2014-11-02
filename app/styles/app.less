@@ -52,6 +52,53 @@ body {
     background: @k-bg;
 }
 
+/* Styles for the breadcrumb dropdown came from here: http://bit.ly/1wSLRnd */
+.breadcrumb-trigger {
+    color: @k-color;
+    padding: 0;
+    list-style: none;
+}
+.breadcrumb-trigger:hover .breadcrumb-dropdown {
+    display: block; /* display dropdown */
+}
+.breadcrumb-dropdown {
+    display: none;
+    position: fixed;
+    width: 150px;
+}
+.breadcrumb-dropdown li:nth-of-type(2) {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.breadcrumb-dropdown li:last-of-type {
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.breadcrumb-dropdown-list-item.clickable {
+    background: @k-bg;
+    padding: 5px;
+    width: 100%;
+}
+.breadcrumb-dropdown-list-item.clickable:hover {
+    background: @k-hover-bg;
+}
+
+/* I'm not proud of this. I sort of went into hackathon mode */
+.breadcrumb-dropdown .fa-caret-up {
+    color: @k-bg;
+    font-size: 3em;
+    line-height: .75;
+}
+
+
 /********************************************************
 I stole most of this CSS from http://bit.ly/1pllLsP and
 used EmberJS for a checkbox instead of the vanilla JavaScript
