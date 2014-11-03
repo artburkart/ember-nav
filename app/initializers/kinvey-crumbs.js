@@ -25,7 +25,6 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
     files: 'Files'
   },
   breadCrumbs: (function() {
-    var self = this;
     var breadCrumbs, controllers, deepestCrumb, defaultPaths;
     controllers = this.get("controllers");
     defaultPaths = this.get("pathNames");
