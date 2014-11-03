@@ -44,31 +44,28 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
           breadCrumbs.addObject({
             path: pc.path,
             model: pc.model,
-            name: pc.name,
+            title: pc.title,
             modelLink: true,
             isCurrent: false,
             siblings: pc.siblings
           });
         });
       }
-      if (!Ember.isEmpty(crumbName)) {
-        defaultPath = defaultPaths[index];
-        specifiedPath = controller.get("breadCrumbPath");
-        if (!Ember.isEmpty(moduleCrumb)) {
-          return breadCrumbs.addObject({
-            name: crumbName,
-            path: moduleCrumb.path,
-            linkable: specifiedPath !== false,
-            isCurrent: false,
-            siblings: self.get('moduleNames').filter(function (name) {
-              return name !== moduleCrumb.path;
-            }).map(function (name) {
-              return {name: name, model: curModel, title: self.get('moduleHash')[name]};
-            })
-          });
-        }
+      defaultPath = defaultPaths[index];
+      specifiedPath = controller.get('breadCrumbPath');
+      if (!Ember.isEmpty(moduleCrumb)) {
         return breadCrumbs.addObject({
-          name: crumbName,
+          path: moduleCrumb.path,
+          model: moduleCrumb.model,
+          title: moduleCrumb.title,
+          modelLink: true,
+          isCurrent: false,
+          siblings: moduleCrumb.siblings
+        });
+      }
+      if (!Ember.isEmpty(crumbName)) {
+        return breadCrumbs.addObject({
+          title: crumbName,
           path: specifiedPath || defaultPath,
           linkable: specifiedPath !== false,
           isCurrent: false,
@@ -85,8 +82,6 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
     "controllers.@each.breadCrumb",
     "controllers.@each.preCrumbs.@each",
     "controllers.@each.crumbSiblings.@each",
-    "controllers.@each.appSiblings.@each",
-    "controllers.@each.envSiblings.@each",
     "controllers.@each.breadCrumbPath",
     "pathNames.[]")
 });

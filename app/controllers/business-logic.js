@@ -2,59 +2,37 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['apps'],
-  breadCrumb: 'Business Logic',
   moduleCrumb: function () {
-    return {path: 'business-logic', model: this.get('model')};
+    return {
+      path: 'business-logic',
+      model: this.get('model'),
+      title: 'Business Logic',
+      siblings: this.get('controllers.apps').getModuleSiblings('business-logic', this.get('model'))
+    };
   }.property(),
-
-  appSiblings: function () {
-    var self = this;
-    return this.get('controllers.apps.model').filter(function (app) {
-      return app.id !== self.get('model.app.id');
-    }).map(function (app) {
-      return {
-        name: 'app',
-        model: app,
-        title: app.get('title')
-      };
-    });
-  }.property('controllers.apps.model.@each', 'model.app.id'),
 
   envSiblings: [],
 
   envSiblingsUpdate: function () {
     var self = this;
-    var modelId = this.get('model.id');
-    self.get('model.app').then(function (app) {
-      app.get('environments').then(function (envs) {
-        envs = envs
-          .filter(function (env) { return env.id !== modelId; })
-          .map(function (env) {
-            return {
-              name: 'environment',
-              model: env,
-              title: env.get('title')
-            };
-          });
-        self.set('envSiblings', envs);
-      });
+    this.get('controllers.apps').getEnvSiblings(this.get('model'), function (sibs) {
+      self.set('envSiblings', sibs);
     });
-  }.observes('model.app', 'model.id'),
+  }.observes('model'),
 
   preCrumbs: function () {
     return [
       {
         path: 'app',
-        name: this.get('model.app.title'),
+        title: this.get('model.app.title'),
         model: this.get('model.app'),
-        siblings: this.get('appSiblings')
-      },
-      {
+        siblings: this.get('controllers.apps').getSiblings(this.get('model.app'))
+      }, {
         path: 'environment',
-        name: this.get('model.title'),
+        title: this.get('model.title'),
         model: this.get('model'),
         siblings: this.get('envSiblings')
       }
     ];
-  }.property('model.app', 'model.app.title', 'envSiblings.@each', 'appSiblings.@each')
+  }.property('model.app', 'model.app.title', 'envSiblings.@each', 'appSiblings.@each'),
 });

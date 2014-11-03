@@ -8,11 +8,6 @@ export default Ember.Controller.extend({
   }.property('model.title'),
 
   crumbSiblings: function () {
-    var self = this;
-    return this.get('controllers.apps.model').filter(function (app) {
-      return app.id !== self.get('model.id');
-    }).map(function (app) {
-      return {name: 'app', model: app, title: app.get('title')};
-    });
-  }.property('controllers.apps.model.@each', 'model.id')
+    return this.get('controllers.apps').getSiblings(this.get('model'));
+  }.property('controllers.apps.model.@each', 'model')
 });
