@@ -21,18 +21,16 @@ export default Ember.Controller.extend({
   }.observes('model'),
 
   preCrumbs: function () {
-    return [
-      {
-        path: 'app',
-        title: this.get('model.app.title'),
-        model: this.get('model.app'),
-        siblings: this.get('controllers.apps').getSiblings(this.get('model.app'))
-      }, {
-        path: 'environment',
-        title: this.get('model.title'),
-        model: this.get('model'),
-        siblings: this.get('envSiblings')
-      }
-    ];
-  }.property('model.app', 'model.app.title', 'envSiblings.@each', 'appSiblings.@each'),
+    return [{
+      path: 'app',
+      title: this.get('model.app.title'),
+      model: this.get('model.app'),
+      siblings: this.get('controllers.apps').getSiblings(this.get('model.app'))
+    }, {
+      path: 'environment',
+      title: this.get('model.title'),
+      model: this.get('model'),
+      siblings: this.get('envSiblings')
+    }];
+  }.property('model.app', 'model.app.title', 'envSiblings.@each'),
 });
