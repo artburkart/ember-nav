@@ -2,14 +2,16 @@
   <li {{bind-attr class="crumb.isCurrent:current: :breadcrumb-trigger"}}>
   {{#if crumb.modelLink}}
     {{#link-to crumb.path crumb.model}}
-      {{crumb.model.title}}
+      {{crumb.name}}
     {{/link-to}}
+    {{#if crumb.siblings}}&#9660;{{/if}}
     {{crumby-dropdown siblings=crumb.siblings}}
   {{/if}}
   {{#if crumb.linkable}}
     {{#link-to crumb.path}}
       {{crumb.name}}
     {{/link-to}}
+    {{#if crumb.siblings}}&#9660;{{/if}}
     {{crumby-dropdown siblings=crumb.siblings}}
   {{/if}}
   </li>

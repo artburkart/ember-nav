@@ -2,10 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['apps'],
-  breadCrumb: 'Users',
-  moduleCrumb: function () {
-    return {path: 'users', model: this.get('model')};
-  }.property(),
+  breadCrumb: 'Configure',
 
   appSiblings: function () {
     var self = this;
@@ -54,16 +51,13 @@ export default Ember.Controller.extend({
         name: this.get('model.title'),
         model: this.get('model'),
         siblings: this.get('envSiblings')
+      },
+      {
+        path: 'data',
+        name: 'Data',
+        model: this.get('model'),
+        moduleCrumb: true
       }
     ];
   }.property('model.app', 'model.app.title', 'envSiblings.@each', 'appSiblings.@each'),
-
-  rows: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  user: {
-    id: '23904283942',
-    username: 'artburkart',
-    email: 'arthur@kinvey.com',
-    _acl: '{creator: "5....',
-    _kmd: '{lmt: "2014-...'
-  }
 });

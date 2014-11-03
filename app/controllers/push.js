@@ -56,5 +56,7 @@ export default Ember.Controller.extend({
         siblings: this.get('envSiblings')
       }
     ];
-  }.property('model.app', 'model.app.title', 'envSiblings.@each', 'appSiblings.@each')
+  }.property('model.app', 'model.app.title', 'envSiblings.@each', 'appSiblings.@each'),
+
+  configured: false
 });

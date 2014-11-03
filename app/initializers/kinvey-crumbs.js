@@ -60,7 +60,9 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
             path: moduleCrumb.path,
             linkable: specifiedPath !== false,
             isCurrent: false,
-            siblings: self.get('moduleNames').map(function (name) {
+            siblings: self.get('moduleNames').filter(function (name) {
+              return name !== moduleCrumb.path;
+            }).map(function (name) {
               return {name: name, model: curModel, title: self.get('moduleHash')[name]};
             })
           });
