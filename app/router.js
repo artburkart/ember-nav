@@ -12,7 +12,7 @@ Router.map(function() {
   this.resource('environment', { path: 'app/env/:environment_id' }, function () {});
   this.route('business-logic', { path: 'app/env/:environment_id/business-logic' });
   this.route('data', { path: 'app/env/:environment_id/data' });
-this.route('data-configure', { path: 'app/env/:environment_id/data/configure'});
+  this.route('data-configure', { path: 'app/env/:environment_id/data/configure'});
   this.route('users', { path: 'app/env/:environment_id/users' });
   this.route('files', { path: 'app/env/:environment_id/files' });
   this.route('dashboard', { path: 'app/env/:environment_id/dashboard' });
@@ -23,6 +23,8 @@ this.route('data-configure', { path: 'app/env/:environment_id/data/configure'});
   this.route('branding-configure', { path: 'app/env/:environment_id/branding/configure'});
   this.route('analytics', { path: 'app/env/:environment_id/analytics' });
   this.route('api-console', { path: 'app/env/:environment_id/api-console' });
+  this.route('profile');
+  this.route('billing');
 });
 
 export default Router;
