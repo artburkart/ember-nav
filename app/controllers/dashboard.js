@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       title: 'Dashboard',
       siblings: this.get('controllers.apps').getModuleSiblings('dashboard', this.get('model'))
     };
-  }.property(),
+  }.property('model'),
 
   envSiblings: [],
 

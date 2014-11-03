@@ -8,15 +8,6 @@ export default Ember.Route.extend({
     self.store.find('app').then(function (apps) {
       self.controllerFor('apps').set('model', apps);
     });
-    self.getModuleNames().forEach(function (name) {
-      self.controllerFor(name).set('moduleNames', self.getModuleNames());
-    });
-    var modulesHash = self.getModulesHash();
-    for (var key in modulesHash) {
-      if (modulesHash.hasOwnProperty(key)) {
-        self.controllerFor(key).set('modulesHash', modulesHash);
-      }
-    }
   },
 
   getModuleNames: function () {

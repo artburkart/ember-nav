@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       title: 'API Console',
       siblings: this.get('controllers.apps').getModuleSiblings('api-console', this.get('model'))
     };
-  }.property(),
+  }.property('model'),
 
   envSiblings: [],
 

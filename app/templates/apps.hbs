@@ -8,9 +8,13 @@
           <div class="col-xs-6">
             <h5><b>Environments:</b></h5>
             <ul class="list-unstyled">
-            {{#each env in app.environments}}
-              <li>{{#link-to "environment" env}}{{env.title}}{{/link-to}}</li>
-            {{/each}}
+            {{#if app.environments}}
+              {{#each env in app.environments}}
+                <li>{{#link-to "environment" env}}{{env.title}}{{/link-to}}</li>
+              {{/each}}
+            {{else}}
+              <h5>no environments here</h5>
+            {{/if}}
             </ul>
           </div>
         </div>

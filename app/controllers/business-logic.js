@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       title: 'Business Logic',
       siblings: this.get('controllers.apps').getModuleSiblings('business-logic', this.get('model'))
     };
-  }.property(),
+  }.property('model'),
 
   envSiblings: [],
 

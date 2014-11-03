@@ -31,12 +31,11 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
     defaultPaths = this.get("pathNames");
     breadCrumbs = [];
     controllers.forEach(function(controller, index) {
-      var crumbName, crumbSiblings, curModel, defaultPath, moduleCrumb, preCrumbs, specifiedPath;
+      var crumbName, crumbSiblings, defaultPath, moduleCrumb, preCrumbs, specifiedPath;
       crumbName = controller.get("breadCrumb");
       crumbSiblings = controller.get('crumbSiblings');
       moduleCrumb = controller.get('moduleCrumb');
       preCrumbs = controller.get('preCrumbs');
-      curModel = controller.get('model');
 
       // Hack for adding pre-crumbs
       if (!Ember.isEmpty(preCrumbs)) {
@@ -83,6 +82,7 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
     "controllers.@each.preCrumbs.@each",
     "controllers.@each.crumbSiblings.@each",
     "controllers.@each.breadCrumbPath",
+    'controllers.@each.moduleCrumb',
     "pathNames.[]")
 });
 

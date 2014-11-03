@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       title: 'Branding',
       siblings: this.get('controllers.apps').getModuleSiblings('branding', this.get('model'))
     };
-  }.property(),
+  }.property('model'),
 
   envSiblings: [],
 

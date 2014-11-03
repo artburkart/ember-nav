@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       title: 'Data',
       siblings: this.get('controllers.apps').getModuleSiblings('data', this.get('model'))
     };
-  }.property(),
+  }.property('model'),
 
   envSiblings: [],
 

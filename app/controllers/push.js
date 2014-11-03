@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       title: 'Push',
       siblings: this.get('controllers.apps').getModuleSiblings('push', this.get('model'))
     };
-  }.property(),
+  }.property('model'),
 
   envSiblings: [],
 
