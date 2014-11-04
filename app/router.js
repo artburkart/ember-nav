@@ -22,7 +22,7 @@ Router.map(function() {
           this.route('users');
 
           // Submodules
-          this.route('analytics_configure', {path: 'business-logic/configure'});
+          this.route('analytics_configure', {path: 'analytics/configure'});
           this.route('api-console_configure', {path: 'api-console/configure'});
           this.route('branding_configure', {path: 'branding/configure'});
           this.route('business-logic_configure', {path: 'business-logic/configure'});
