@@ -1,11 +1,17 @@
 {{#each crumb in breadCrumbs}}
   <li {{bind-attr class="crumb.isCurrent:current: :breadcrumb-trigger"}}>
-    {{#if crumb.linkable}}
-      {{#link-to crumb.path}}{{crumb.name}}{{/link-to}}
-      {{#if crumb.siblings}}&#9660;{{/if}}
-      {{crumby-dropdown siblings=crumb.siblings}}
+    {{#if crumb.model}}
+      {{#link-to crumb.path crumb.model}}{{crumb.name}}{{/link-to}}
+        {{#if crumb.siblings}}&#9660;{{/if}}
+        {{crumby-dropdown siblings=crumb.siblings modules=crumb.modules}}
     {{else}}
-      {{crumb.name}}
+      {{#if crumb.linkable}}
+        {{#link-to crumb.path}}{{crumb.name}}{{/link-to}}
+        {{#if crumb.siblings}}&#9660;{{/if}}
+        {{crumby-dropdown siblings=crumb.siblings modules=crumb.modules}}
+      {{else}}
+        {{crumb.name}}
+      {{/if}}
     {{/if}}
   </li>
 {{/each}}

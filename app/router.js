@@ -11,22 +11,26 @@ Router.map(function() {
       this.resource('environments', function() {
         this.resource('environment', { path: ':environment_id' }, function() {
           // Modules
-          this.resource('business-logic', function () {
-            this.route('configure');
-          });
+          this.route('analytics');
+          this.route('api-console');
+          this.route('branding');
+          this.route('business-logic');
+          this.route('dashboard');
           this.route('data');
-          // this.resource('data', function () {
-          //   this.route('configure');
-          // });
-          this.resource('branding', function () {
-            this.route('configure');
-          });
-          this.resource('users', function () {});
-          this.resource('files', function () {});
-          this.resource('dashboard', function () {});
-          this.resource('push', function () {});
-          this.resource('analytics', function () {});
-          this.resource('api-console', function () {});
+          this.route('files');
+          this.route('push');
+          this.route('users');
+
+          // Submodules
+          this.route('analytics_configure', {path: 'business-logic/configure'});
+          this.route('api-console_configure', {path: 'api-console/configure'});
+          this.route('branding_configure', {path: 'branding/configure'});
+          this.route('business-logic_configure', {path: 'business-logic/configure'});
+          this.route('dashboard_configure', {path: 'dashboard/configure'});
+          this.route('data_configure', {path: 'data/configure'});
+          this.route('files_configure', {path: 'files/configure'});
+          this.route('push_configure', {path: 'push/configure'});
+          this.route('users_configure', {path: 'users/configure'});
         });
       });
     });

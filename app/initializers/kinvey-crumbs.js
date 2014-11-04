@@ -15,17 +15,24 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
     defaultPaths = this.get("pathNames");
     breadCrumbs = [];
     controllers.forEach(function(controller, index) {
-      var crumbName, crumbSiblings, defaultPath, specifiedPath;
+      var crumbName, defaultPath, postCrumbs, specifiedPath;
       crumbName = controller.get("breadCrumb");
+      postCrumbs = controller.get('postCrumbs');
       if (!Ember.isEmpty(crumbName)) {
         defaultPath = defaultPaths[index];
-        specifiedPath = controller.get("breadCrumbPath");
-        return breadCrumbs.addObject({
+        breadCrumbs.addObject({
           name: crumbName,
           path: specifiedPath || defaultPath,
           linkable: specifiedPath !== false,
           isCurrent: false,
-          siblings: controller.get('crumbSiblings')
+          siblings: controller.get('crumbSiblings')  // The siblings of the crumb
+        });
+      }
+
+      // Add succeeding bread crumbs
+      if (!Ember.isEmpty(postCrumbs)) {
+        postCrumbs.forEach(function (postCrumb) {
+          breadCrumbs.addObject(postCrumb);
         });
       }
     });
@@ -34,7 +41,12 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
       deepestCrumb.isCurrent = true;
     }
     return breadCrumbs;
-  }).property("controllers.@each.breadCrumb", "controllers.@each.crumbSiblings.@each", "controllers.@each.breadCrumbPath", "pathNames.[]")
+  }).property(
+    "controllers.@each.breadCrumb",
+    "controllers.@each.crumbSiblings.@each",  // Watch the crumb siblings for changes
+    "controllers.@each.breadCrumbPath",
+    "controllers.@each.postCrumbs.@each",  // Watch the succeeding crumbs for changes
+    "pathNames.[]")
 });
 
 export function initialize(container, app) {

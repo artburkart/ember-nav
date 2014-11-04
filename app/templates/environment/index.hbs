@@ -4,18 +4,18 @@
   <div class="row">
     <div class="list-group col-xs-12 col-md-6">
       {{link-to-lgi path="environment.data" model=this title="Data"}}
-      {{link-to-lgi path="dashboard" model=this title="Dashboard"}}
-      {{link-to-lgi path="business-logic" model=this title="Business Logic"}}
-      {{link-to-lgi path="users" model=this title="Users"}}
-      {{link-to-lgi path="files" model=this title="Files"}}
+      {{link-to-lgi path="environment.dashboard" model=this title="Dashboard"}}
+      {{link-to-lgi path="environment.business-logic" model=this title="Business Logic"}}
+      {{link-to-lgi path="environment.users" model=this title="Users"}}
+      {{link-to-lgi path="environment.files" model=this title="Files"}}
     </div>
     <div class="list-group col-xs-12 col-md-6">
-      {{link-to-lgi path="push" model=this title="Push"}}
-      {{link-to-lgi path="branding" model=this title="Branding"}}
-      {{link-to-lgi path="analytics" model=this title="Analytics"}}
-      {{link-to-lgi path="api-console" model=this title="API Console"}}
+      {{link-to-lgi path="environment.push" model=this title="Push"}}
+      {{link-to-lgi path="environment.branding" model=this title="Branding"}}
+      {{link-to-lgi path="environment.analytics" model=this title="Analytics"}}
+      {{link-to-lgi path="environment.api-console" model=this title="API Console"}}
     </div>
   </div>
 </div>
 {{/with}}
-{{moduleNames}}
+{{outlet}}

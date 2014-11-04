@@ -2,9 +2,11 @@
 <ul class="breadcrumb-dropdown list-unstyled">
   <li class="breadcrumb-dropdown-list-item text-center"><i class="fa fa-caret-up"></i></li>
   {{#each s in siblings}}
-    {{#link-to s.typeKey s class="breadcrumb-dropdown-list-item clickable" tagName="li"}}
-      {{#link-to s.typeKey s}}{{s.title}}{{/link-to}}
-    {{/link-to}}
+    {{#if s.model}}
+      {{breadcrumb-dropdown-item path=s.typeKey model=s.model title=s.title}}
+    {{else}}
+      {{breadcrumb-dropdown-item path=s.typeKey model=s title=s.title}}
+    {{/if}}
   {{/each}}
 </ul>
 {{/if}}
