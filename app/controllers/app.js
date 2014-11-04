@@ -2,12 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['apps'],
-
   breadCrumb: function () {
     return this.get('model.title');
   }.property('model.title'),
-
   crumbSiblings: function () {
-    return this.get('controllers.apps').getSiblings(this.get('model'));
-  }.property('controllers.apps.model.@each', 'model')
+    var self = this;
+    return this.get('controllers.apps.model').filter(function (app) {
+      return app.get('id') !== self.get('model.id');
+    });
+  }.property('controllers.apps.model.@each')
 });

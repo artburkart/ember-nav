@@ -1,7 +1,9 @@
   <nav {{bind-attr class="slideOut:cbp-spmenu-open: :cbp-spmenu :cbp-spmenu-vertical :cbp-spmenu-left"}}>
     <h3>Kinvey</h3>
-    {{#link-to 'profile'}}Profile{{/link-to}}
-    {{#link-to 'billing'}}Billing{{/link-to}}
+    <a href="#">Profile</a>
+    <a href="#">Billing</a>
+{{!--     {{#link-to 'profile'}}Profile{{/link-to}}
+    {{#link-to 'billing'}}Billing{{/link-to}} --}}
     <a class="main-menu-bottom-link" href="#">Logout</a>
   </nav>
   {{input id="main-menu-check" class="main-menu-check" type="checkbox" checked=slideOut}}

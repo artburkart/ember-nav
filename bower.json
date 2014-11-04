@@ -1,5 +1,5 @@
 {
-  "name": "ember-nav",
+  "name": "kinvey-app",
   "dependencies": {
     "handlebars": "~1.3.0",
     "jquery": "^1.11.1",
@@ -12,13 +12,13 @@
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
-    "qunit": "~1.15.0"
+    "qunit": "~1.15.0",
+    "ember-breadcrumbs": "~0.0.2"
   },
   "devDependencies": {
     "bootstrap": "~3.3.0",
-    "normalize.css": "~3.0.2",
-    "fontawesome": "~4.2.0",
     "modernizr": "~2.8.3",
-    "ember-breadcrumbs": "~0.0.2"
+    "normalize.css": "~3.0.2",
+    "fontawesome": "~4.2.0"
   }
 }

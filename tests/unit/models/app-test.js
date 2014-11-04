@@ -1,17 +1,15 @@
-import DS from 'ember-data';
-import Ember from 'ember';
 import {
   moduleForModel,
   test
 } from 'ember-qunit';
 
-moduleForModel('app', 'App Model', {
-  needs: ['model:environment']
+moduleForModel('app', 'App', {
+  // Specify the other units that are required for this test.
+  needs: []
 });
 
-test('App is a valid ember-data Model', function () {
-  var store = this.store();
-  var app = this.subject({title: 'Angry Birds'});
-  ok(app);
-  ok(app instanceof DS.Model);
+test('it exists', function() {
+  var model = this.subject();
+  // var store = this.store();
+  ok(!!model);
 });

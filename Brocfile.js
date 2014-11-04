@@ -29,4 +29,3 @@ var fontawesome = pickFiles('bower_components/fontawesome/fonts', {
   destDir: '/fonts'
 });
 module.exports = mergeTrees([app.toTree(), fontawesome]);
-

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'ember-nav',
+    modulePrefix: 'kinvey-app',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

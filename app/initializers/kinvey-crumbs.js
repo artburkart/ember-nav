@@ -9,65 +9,23 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
   classNames: 'breadcrumb',
   layout: null,
   layoutName: 'kinvey-crumbs',
-  moduleNames: [
-    'dashboard', 'push', 'business-logic', 'branding', 'data',
-    'analytics', 'users', 'api-console', 'files'
-  ],
-  moduleHash: {
-    dashboard: 'Dashboard',
-    push: 'Push',
-    'business-logic': 'Business Logic',
-    branding: 'Branding',
-    data: 'Data',
-    analytics: 'Analytics',
-    users: 'Users',
-    'api-console': 'API Console',
-    files: 'Files'
-  },
   breadCrumbs: (function() {
     var breadCrumbs, controllers, deepestCrumb, defaultPaths;
     controllers = this.get("controllers");
     defaultPaths = this.get("pathNames");
     breadCrumbs = [];
     controllers.forEach(function(controller, index) {
-      var crumbName, crumbSiblings, defaultPath, moduleCrumb, preCrumbs, specifiedPath;
+      var crumbName, crumbSiblings, defaultPath, specifiedPath;
       crumbName = controller.get("breadCrumb");
-      crumbSiblings = controller.get('crumbSiblings');
-      moduleCrumb = controller.get('moduleCrumb');
-      preCrumbs = controller.get('preCrumbs');
-
-      // Hack for adding pre-crumbs
-      if (!Ember.isEmpty(preCrumbs)) {
-        preCrumbs.forEach(function (pc) {
-          breadCrumbs.addObject({
-            path: pc.path,
-            model: pc.model,
-            title: pc.title,
-            modelLink: true,
-            isCurrent: false,
-            siblings: pc.siblings
-          });
-        });
-      }
-      defaultPath = defaultPaths[index];
-      specifiedPath = controller.get('breadCrumbPath');
-      if (!Ember.isEmpty(moduleCrumb)) {
-        return breadCrumbs.addObject({
-          path: moduleCrumb.path,
-          model: moduleCrumb.model,
-          title: moduleCrumb.title,
-          modelLink: true,
-          isCurrent: false,
-          siblings: moduleCrumb.siblings
-        });
-      }
       if (!Ember.isEmpty(crumbName)) {
+        defaultPath = defaultPaths[index];
+        specifiedPath = controller.get("breadCrumbPath");
         return breadCrumbs.addObject({
-          title: crumbName,
+          name: crumbName,
           path: specifiedPath || defaultPath,
           linkable: specifiedPath !== false,
           isCurrent: false,
-          siblings: crumbSiblings
+          siblings: controller.get('crumbSiblings')
         });
       }
     });
@@ -76,13 +34,7 @@ KinveyCrumbs.BreadCrumbsComponent.reopen({
       deepestCrumb.isCurrent = true;
     }
     return breadCrumbs;
-  }).property(
-    "controllers.@each.breadCrumb",
-    "controllers.@each.preCrumbs.@each",
-    "controllers.@each.crumbSiblings.@each",
-    "controllers.@each.breadCrumbPath",
-    'controllers.@each.moduleCrumb',
-    "pathNames.[]")
+  }).property("controllers.@each.breadCrumb", "controllers.@each.crumbSiblings.@each", "controllers.@each.breadCrumbPath", "pathNames.[]")
 });
 
 export function initialize(container, app) {

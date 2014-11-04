@@ -6,23 +6,31 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('apps', { path: '/app' }, function () {});
-  this.resource('app', { path: '/app/:app_id' }, function () {});
-  this.resource('environments', { path: 'app/env/' }, function () {});
-  this.resource('environment', { path: 'app/env/:environment_id' }, function () {});
-  this.route('business-logic', { path: 'app/env/:environment_id/business-logic' });
-  this.route('data', { path: 'app/env/:environment_id/data' });
-  this.route('data-configure', { path: 'app/env/:environment_id/data/configure'});
-  this.route('users', { path: 'app/env/:environment_id/users' });
-  this.route('files', { path: 'app/env/:environment_id/files' });
-  this.route('dashboard', { path: 'app/env/:environment_id/dashboard' });
-  this.route('push', { path: 'app/env/:environment_id/push' });
-  this.route('push-send', { path: 'app/env/:environment_id/push/send' });
-  this.route('push-configure', { path: 'app/env/:environment_id/push/configure' });
-  this.route('branding', { path: 'app/env/:environment_id/branding' });
-  this.route('branding-configure', { path: 'app/env/:environment_id/branding/configure'});
-  this.route('analytics', { path: 'app/env/:environment_id/analytics' });
-  this.route('api-console', { path: 'app/env/:environment_id/api-console' });
+  this.resource('apps', function() {
+    this.resource('app', { path: ':app_id' }, function() {
+      this.resource('environments', function() {
+        this.resource('environment', { path: ':environment_id' }, function() {
+          // Modules
+          this.resource('business-logic', function () {
+            this.route('configure');
+          });
+          this.route('data');
+          // this.resource('data', function () {
+          //   this.route('configure');
+          // });
+          this.resource('branding', function () {
+            this.route('configure');
+          });
+          this.resource('users', function () {});
+          this.resource('files', function () {});
+          this.resource('dashboard', function () {});
+          this.resource('push', function () {});
+          this.resource('analytics', function () {});
+          this.resource('api-console', function () {});
+        });
+      });
+    });
+  });
   this.route('profile');
   this.route('billing');
 });

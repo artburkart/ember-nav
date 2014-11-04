@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'ember-nav/initializers/kinvey-crumbs';
+import { initialize } from 'kinvey-app/initializers/kinvey-crumbs';
 
 var container, application;
 

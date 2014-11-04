@@ -1,29 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['apps'],
-
   breadCrumb: function () {
     return this.get('model.title');
   }.property('model.title'),
-
-  crumbSiblings: [],
-
-  preCrumbs: function () {
-    return [
-      {
-        path: 'app',
-        title: this.get('model.app.title'),
-        model: this.get('model.app'),
-        siblings: this.get('controllers.apps').getSiblings(this.get('model.app'))
-      }
-    ];
-  }.property('model.id', 'model.app', 'model.app.title', 'controllers.apps.model.@each'),
-
   crumbSiblingsUpdate: function () {
     var self = this;
-    this.get('controllers.apps').getEnvSiblings(this.get('model'), function (siblings) {
-      self.set('crumbSiblings', siblings);
+    this.get('model.app').then(function (app) {
+      app.get('environments').then(function (envs) {
+        self.set('crumbSiblings', envs.filter(function (env) {
+          return env.get('id') !== self.get('model.id');
+        }));
+      });
     });
+  }.observes('model'),
+  postCrumbUpdate: function () {
+    var curModule = window.location.pathname.split('/')[5];
+
   }.observes('model')
 });
